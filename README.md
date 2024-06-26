@@ -23,14 +23,6 @@ This is a simple Todo App built with TypeScript.
 4. Delete tasks by clicking on the delete button
 5. Use the filter buttons to show tasks based on their status
 
-## Contributing
-
-Contributions are welcome! Please follow the guidelines in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE).
-
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
