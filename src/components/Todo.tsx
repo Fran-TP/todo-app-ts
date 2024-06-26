@@ -1,7 +1,7 @@
 import { type TodoId, type Todo as TodoTypes } from '../types'
 
 interface Props extends TodoTypes {
-  onRemoveTodo: () => void
+  onRemoveTodo: ({ id }: TodoId) => void
   onToggleTodo: ({ id }: TodoId) => void
 }
 
@@ -12,10 +12,12 @@ const Todo: React.FC<Props> = ({
   onRemoveTodo,
   onToggleTodo
 }) => {
-  const handleChangeCheckbox = (
-    _event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleChangeCheckbox = (_event: React.ChangeEvent<HTMLInputElement>): void => {
     onToggleTodo({ id })
+  }
+
+  const handleClickRemove = (): void => {
+    onRemoveTodo({ id })
   }
 
   return (
@@ -39,7 +41,7 @@ const Todo: React.FC<Props> = ({
       </label>
       <button
         className='ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-in-out'
-        onClick={onRemoveTodo}
+        onClick={handleClickRemove}
       >
         <span role='img' aria-label='delete'>
           ❌

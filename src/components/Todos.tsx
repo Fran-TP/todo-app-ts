@@ -17,9 +17,7 @@ const Todos: React.FC<Props> = ({ todos, onRemoveTodo, onToggleTodo }) => {
             id={todo.id}
             text={todo.text}
             completed={todo.completed}
-            onRemoveTodo={() => {
-              onRemoveTodo(todo)
-            }}
+            onRemoveTodo={onRemoveTodo}
             onToggleTodo={onToggleTodo}
           />
         </li>
