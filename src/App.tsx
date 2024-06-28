@@ -1,6 +1,6 @@
 // cSpell: words todos consts
 import { useState } from 'react'
-import { type TodoText, type FilterValue, type TodoId } from './types'
+import { type TodoText, type FilterValue, type TodoId, type Todo as TodoType } from './types'
 import Todos from './components/Todos'
 import Footer from './components/common/Footer'
 import Header from './components/Header'
@@ -18,6 +18,15 @@ const App = (): JSX.Element => {
   const [filterSelected, setFilterSelected] = useState<FilterValue>(
     TODO_FILTERS.ALL
   )
+
+  const handleEditTodo = ({ id, text }: Omit<TodoType, 'completed'>): void => {
+    console.log('edit todo', id, text)
+    const newTodos = todos.map(todo => {
+      return todo.id === id ? { ...todo, text } : todo
+    })
+
+    setTodos(newTodos)
+  }
 
   const handleRemoveTodo = ({ id }: TodoId): void => {
     const newTodos = todos.filter(todo => todo.id !== id)
@@ -69,6 +78,7 @@ const App = (): JSX.Element => {
       <Header addTodo={handleAddTodo} />
       <Todos
         todos={filteredTodos}
+        onEditTodo={handleEditTodo}
         onRemoveTodo={handleRemoveTodo}
         onToggleTodo={handleToggleTodo}
       />
