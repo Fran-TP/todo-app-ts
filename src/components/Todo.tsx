@@ -97,7 +97,7 @@ const Todo: React.FC<Props> = ({
       </div>
       {editing && (
         <input
-          className='w-full h-[60px] px-2 py-1 border-gray-400 focus:border-[#b83f45] border-2 focus:ring-0'
+          className='w-full h-[60px] px-2 py-1 border-gray-400 focus:border-[#b83f45] border-2 focus:ring-0 opacity-0 transition-all duration-300 ease-linear focus:opacity-100'
           name='text'
           type='text'
           value={editedText}
