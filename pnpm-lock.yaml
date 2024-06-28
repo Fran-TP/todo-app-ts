@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@formkit/auto-animate':
+        specifier: ^0.8.2
+        version: 0.8.2
       '@million/lint':
         specifier: 1.0.0-rc.26
         version: 1.0.0-rc.26(react@18.3.1)(rollup@4.18.0)
@@ -492,6 +495,9 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@formkit/auto-animate@0.8.2':
+    resolution: {integrity: sha512-SwPWfeRa5veb1hOIBMdzI+73te5puUBHmqqaF1Bu7FjvxlYSz/kJcZKSa9Cg60zL0uRNeJL2SbRxV6Jp6Q1nFQ==}
 
   '@hono/node-server@1.11.4':
     resolution: {integrity: sha512-8TOiiiAqcFC6f62P7M9p6adQREAlWdVi1awehAwgWW+3R65/rKzHnLARO/Hu/466z01VNViBoogqatqXJMyItA==}
@@ -2783,6 +2789,8 @@ snapshots:
 
   '@eslint/js@8.57.0': {}
 
+  '@formkit/auto-animate@0.8.2': {}
+
   '@hono/node-server@1.11.4': {}
 
   '@humanwhocodes/config-array@0.11.14':
@@ -2828,7 +2836,7 @@ snapshots:
       '@antfu/ni': 0.21.12
       '@axiomhq/js': 1.0.0-rc.3
       '@babel/core': 7.24.6
-      '@babel/types': 7.24.6
+      '@babel/types': 7.24.7
       '@clack/prompts': 0.7.0
       cli-high: 0.4.2
       diff: 5.2.0

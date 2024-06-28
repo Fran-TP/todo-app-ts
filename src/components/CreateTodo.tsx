@@ -17,13 +17,16 @@ const CreateTodo: React.FC<Props> = ({ addTodo }) => {
     }
   }
 
-  const handleChangeInputValue = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChangeInputValue = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setInputValue(event.target.value)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input
+        name='newTextTodo'
         className='w-80 sm:w-[550px] px-10 py-3 text-2xl border-2 focus:ring-0 focus:border-2 focus:border-[#cf7d7d] border-[#e6e6e6]'
         type='text'
         placeholder='What needs to be done?'
