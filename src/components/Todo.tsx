@@ -56,8 +56,8 @@ const Todo: React.FC<Props> = ({
   }
 
   const handleBlur = (): void => {
-    setEditing(false)
     setEditedText(text)
+    setEditing(false)
   }
 
   useEffect(() => {
@@ -66,35 +66,38 @@ const Todo: React.FC<Props> = ({
 
   return (
     <>
-      <div
-        className={`flex items-center gap-2 h-[60px] px-2 group ${editing ? 'hidden' : ''}`}
-        data-todo-id={id}
-        onDoubleClick={handleDoubleClick}
-      >
-        <input
-          id={id}
-          name='completed'
-          type='checkbox'
-          aria-label='completed'
-          checked={completed}
-          onChange={handleChangeCheckbox}
-          className='peer h-8 w-8 cursor-pointer border-gray-400 focus:ring-transparent rounded-full border checked:text-transparent checked:border-green-600 checked:hover:border-green-600 checked:hover:bg-transparent checked:focus:border-green-600 checked:focus:bg-transparent'
-        />
-        <label
-          htmlFor={id}
-          className='peer-checked:line-through peer-checked:text-gray-500 transition-colors duration-300 ease-in-out'
+      {!editing && (
+        <div
+          className='flex items-center gap-2 h-[60px] px-2 group'
+          data-todo-id={id}
+          onDoubleClick={handleDoubleClick}
         >
-          {text}
-        </label>
-        <button
-          className='ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-in-out'
-          onClick={handleClickRemove}
-        >
-          <span role='img' aria-label='delete'>
-            ❌
-          </span>
-        </button>
-      </div>
+          <input
+            id={id}
+            name='completed'
+            type='checkbox'
+            aria-label='completed'
+            checked={completed}
+            onChange={handleChangeCheckbox}
+            className='peer h-8 w-8 cursor-pointer border-gray-400 focus:ring-transparent rounded-full border checked:text-transparent checked:border-green-600 checked:hover:border-green-600 checked:hover:bg-transparent checked:focus:border-green-600 checked:focus:bg-transparent'
+          />
+          <label
+            htmlFor={id}
+            className='peer-checked:line-through peer-checked:text-gray-500 transition-colors duration-300 ease-in-out'
+          >
+            {text}
+          </label>
+          <button
+            className='ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-in-out'
+            onClick={handleClickRemove}
+          >
+            <span role='img' aria-label='delete'>
+              ❌
+            </span>
+          </button>
+        </div>
+      )}
+
       {editing && (
         <input
           className='w-full h-[60px] px-2 py-1 border-gray-400 focus:border-[#b83f45] border-2 focus:ring-0 opacity-0 transition-all duration-300 ease-linear focus:opacity-100'
@@ -104,6 +107,7 @@ const Todo: React.FC<Props> = ({
           onChange={handleChangeText}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
+          autoComplete='off'
           ref={inputEditRef}
         />
       )}
