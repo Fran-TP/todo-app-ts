@@ -4,7 +4,7 @@ import Footer from './components/common/Footer'
 import Header from './components/Header'
 import { useTodos } from './hooks/useTodo'
 
-const App = (): JSX.Element => {
+const App: React.FC = () => {
   const {
     activeCount,
     completedCount,
