@@ -17,6 +17,7 @@ const App = (): JSX.Element => {
     handleAddTodo,
     todos: filteredTodos
   } = useTodos()
+
   return (
     <div className='flex flex-col justify-start items-center'>
       <Header addTodo={handleAddTodo} />
@@ -26,13 +27,15 @@ const App = (): JSX.Element => {
         onRemoveTodo={handleRemoveTodo}
         onToggleTodo={handleToggleTodo}
       />
-      {(completedCount + activeCount) > 0 && (<Footer
-        activeCount={activeCount}
-        completedCount={completedCount}
-        filterSelected={filterSelected}
-        onFilterChange={handleFilterChange}
-        onClearCompleted={handleClearCompleted}
-      />)}
+      {completedCount + activeCount > 0 && (
+        <Footer
+          activeCount={activeCount}
+          completedCount={completedCount}
+          filterSelected={filterSelected}
+          onFilterChange={handleFilterChange}
+          onClearCompleted={handleClearCompleted}
+        />
+      )}
     </div>
   )
 }
