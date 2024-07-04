@@ -8,6 +8,7 @@ const App: React.FC = () => {
   const {
     activeCount,
     completedCount,
+    isAllCompleted,
     filterSelected,
     handleEditTodo,
     handleRemoveTodo,
@@ -15,6 +16,7 @@ const App: React.FC = () => {
     handleFilterChange,
     handleClearCompleted,
     handleAddTodo,
+    handleToggleAll,
     todos
   } = useTodos()
 
@@ -23,9 +25,11 @@ const App: React.FC = () => {
       <Header addTodo={handleAddTodo} />
       <Todos
         todos={todos}
+        isAllCompleted={isAllCompleted}
         onEditTodo={handleEditTodo}
         onRemoveTodo={handleRemoveTodo}
         onToggleTodo={handleToggleTodo}
+        onToggleAll={handleToggleAll}
       />
       {completedCount + activeCount > 0 && (
         <Footer
