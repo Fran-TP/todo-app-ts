@@ -15,14 +15,14 @@ const App: React.FC = () => {
     handleFilterChange,
     handleClearCompleted,
     handleAddTodo,
-    todos: filteredTodos
+    todos
   } = useTodos()
 
   return (
     <div className='flex flex-col justify-start items-center'>
       <Header addTodo={handleAddTodo} />
       <Todos
-        todos={filteredTodos}
+        todos={todos}
         onEditTodo={handleEditTodo}
         onRemoveTodo={handleRemoveTodo}
         onToggleTodo={handleToggleTodo}
