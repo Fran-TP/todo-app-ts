@@ -5,8 +5,7 @@ import {
   type FilterValue,
   type ListOfTodos,
   type TodoId,
-  type Todo as TodoType,
-  type TodoCompleted
+  type Todo as TodoType
 } from '../types'
 import { TODO_FILTERS } from '../consts'
 import { mockTodos } from '../mocks/mocksTodo'
@@ -23,7 +22,7 @@ export const useTodos = (): {
   handleFilterChange: (args: FilterValue) => void
   handleClearCompleted: () => void
   handleAddTodo: ({ text }: TodoText) => void
-  handleToggleAll: ({ completed }: TodoCompleted) => void
+  handleToggleAll: () => void
 } => {
   const [todos, setTodos] = useState(mockTodos)
   const [filterSelected, setFilterSelected] = useState<FilterValue>(
