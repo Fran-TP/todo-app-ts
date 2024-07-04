@@ -5,7 +5,8 @@ import {
   type FilterValue,
   type ListOfTodos,
   type TodoId,
-  type Todo as TodoType
+  type Todo as TodoType,
+  type TodoCompleted
 } from '../types'
 import { TODO_FILTERS } from '../consts'
 import { mockTodos } from '../mocks/mocksTodo'
@@ -13,6 +14,7 @@ import { mockTodos } from '../mocks/mocksTodo'
 export const useTodos = (): {
   activeCount: number
   completedCount: number
+  isAllCompleted: boolean
   todos: ListOfTodos
   filterSelected: FilterValue
   handleEditTodo: ({ id, text }: Omit<TodoType, 'completed'>) => void
@@ -21,6 +23,7 @@ export const useTodos = (): {
   handleFilterChange: (args: FilterValue) => void
   handleClearCompleted: () => void
   handleAddTodo: ({ text }: TodoText) => void
+  handleToggleAll: ({ completed }: TodoCompleted) => void
 } => {
   const [todos, setTodos] = useState(mockTodos)
   const [filterSelected, setFilterSelected] = useState<FilterValue>(
@@ -69,6 +72,16 @@ export const useTodos = (): {
     setTodos([...todos, newTodo])
   }
 
+  const handleToggleAll = (): void => {
+    const areAllCompleted = todos.every(todo => todo.completed)
+
+    const newTodos = todos.map(todo => {
+      return { ...todo, completed: !areAllCompleted }
+    })
+
+    setTodos(newTodos)
+  }
+
   const filteredTodos = todos.filter(todo => {
     if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
     if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
@@ -77,10 +90,12 @@ export const useTodos = (): {
 
   const activeCount = todos.filter(todo => !todo.completed).length
   const completedCount = todos.length - activeCount
+  const allCompleted = todos.every(todo => todo.completed)
 
   return {
     activeCount,
     completedCount,
+    isAllCompleted: allCompleted,
     filterSelected,
     handleEditTodo,
     handleRemoveTodo,
@@ -88,6 +103,7 @@ export const useTodos = (): {
     handleFilterChange,
     handleClearCompleted,
     handleAddTodo,
+    handleToggleAll,
     todos: filteredTodos
   }
 }
