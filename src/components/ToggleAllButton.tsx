@@ -1,14 +1,12 @@
 // cSpell: words todos
-import { type TodoCompleted } from '../types'
-
 interface Props {
   isAllCompleted: boolean
-  onToggleAll: ({ completed }: TodoCompleted) => void
+  onToggleAll: () => void
 }
 
 const ToggleAllButton: React.FC<Props> = ({ isAllCompleted, onToggleAll }) => {
   const handleToggleAllTodoItems = (): void => {
-    onToggleAll({ completed: true })
+    onToggleAll()
   }
 
   return (
