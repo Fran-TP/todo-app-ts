@@ -38,11 +38,13 @@ const Todo: React.FC<Props> = ({
 
       if (editedText.trim() === '') {
         onRemoveTodo({ id })
+        return
       }
 
       if (editedText.trim() !== text) {
         onEditTodo({ id, text: editedText.trim() })
         setEditing(false)
+        return
       }
     }
 
