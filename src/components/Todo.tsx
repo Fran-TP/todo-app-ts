@@ -88,7 +88,7 @@ const Todo: React.FC<Props> = ({
             {text}
           </label>
           <button
-            className='ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-150 ease-in-out'
+            className='ml-auto md:opacity-0 md:group-hover:opacity-100  transition-opacity duration-150 ease-in-out'
             onClick={handleClickRemove}
           >
             <span role='img' aria-label='delete'>
